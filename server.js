@@ -5,11 +5,12 @@ var express = require('express'),
 var HOSTNAME = 'localhost',
     PORT = 8080,
     PUBLIC_DIR = __dirname + '/public_html';
+var i = 0;
 
-app.use(function (req) {
-	// Здесь нужно написать журналирование в формате
-	// (журналирование - вывод в консоль)
-	// [время] [номер запроса по счету]
+app.use(function (req, res, next) {
+	var date = new Date();
+	console.log("[" + date.toLocaleString() + "] [Request no." + i++ + "]");
+	next();
 });
 
 app
