@@ -6,7 +6,8 @@ module.exports = function (grunt) {
 			dev: {
 				command: 'node server.js'
 			}
-			// запуск сервера через скрипт shell'a https://www.npmjs.com/package/grunt-shell
+			// запуск сервера через скрипт shell'a
+            // https://www.npmjs.com/package/grunt-shell
 		},
 
 		watch: {
@@ -17,8 +18,10 @@ module.exports = function (grunt) {
                     spawn: false
                 }
             }
-			// запуск watcher'a, который следит за изенениями файлов  templates/*.xml
-			// и если они изменяются, то запускает таск сборки шаблонов (grunt fest)
+			// запуск watcher'a, который следит за
+            // изменениями файлов  templates/*.xml
+			// и если они изменяются, то запускает
+            // таск сборки шаблонов (grunt fest)
 		},
 		
 		concurrent: {
@@ -26,7 +29,8 @@ module.exports = function (grunt) {
             options: {
                 logConcurrentOutput: true
             }
-			// одновременный запуска shell'a и watcher'a https://www.npmjs.com/package/grunt-concurrent
+			// одновременный запуска shell'a и watcher'a
+            // https://www.npmjs.com/package/grunt-concurrent
 		},
 
 		fest: {
@@ -50,7 +54,7 @@ module.exports = function (grunt) {
 
     });
 
-	// подключть все необходимые модули
+	// подключить все необходимые модули
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-concurrent');
 	grunt.loadNpmTasks('grunt-shell');

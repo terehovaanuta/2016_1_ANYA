@@ -1,9 +1,9 @@
 {
-  "name": "epicgame",
+  "name": "bloodydefense",
   "version": "0.1.0",
   "description": "SSPA - Simple Single Page Application",
   "main": "index.js",
-  "author": "a.mezin@corp.mail.ru",
+  "author": "ANYA",
   "license": "MIT",
   "devDependencies": {
     "body-parser": "^1.14.2",
