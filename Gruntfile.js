@@ -2,15 +2,15 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
 
-		shell: {
-			dev: {
-				command: 'node server.js'
-			}
-			// запуск сервера через скрипт shell'a
+        shell: {
+            dev: {
+                command: 'node server.js'
+            }
+            // запуск сервера через скрипт shell'a
             // https://www.npmjs.com/package/grunt-shell
-		},
+        },
 
-		watch: {
+        watch: {
             scripts: {
                 files: ['templates/*.xml'],
                 tasks: ['fest'],
@@ -18,22 +18,22 @@ module.exports = function (grunt) {
                     spawn: false
                 }
             }
-			// запуск watcher'a, который следит за
+            // запуск watcher'a, который следит за
             // изменениями файлов  templates/*.xml
-			// и если они изменяются, то запускает
+            // и если они изменяются, то запускает
             // таск сборки шаблонов (grunt fest)
-		},
-		
-		concurrent: {
+        },
+
+        concurrent: {
             target1: ['shell', 'watch'],
             options: {
                 logConcurrentOutput: true
             }
-			// одновременный запуска shell'a и watcher'a
+            // одновременный запуска shell'a и watcher'a
             // https://www.npmjs.com/package/grunt-concurrent
-		},
+        },
 
-		fest: {
+        fest: {
             templates: {
                 files: [{
                     expand: true,
@@ -54,11 +54,11 @@ module.exports = function (grunt) {
 
     });
 
-	// подключить все необходимые модули
+    // подключить все необходимые модули
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-concurrent');
-	grunt.loadNpmTasks('grunt-shell');
-	grunt.loadNpmTasks('grunt-fest');
+    grunt.loadNpmTasks('grunt-shell');
+    grunt.loadNpmTasks('grunt-fest');
 
     // результат команды grunt
     grunt.registerTask('default', ['concurrent:target1']);
