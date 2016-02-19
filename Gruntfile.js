@@ -4,7 +4,7 @@ module.exports = function (grunt) {
 
 		shell: {
 			dev: {
-				command: "node server.js"
+				command: 'node server.js'
 			}
 			// запуск сервера через скрипт shell'a https://www.npmjs.com/package/grunt-shell
 		},
