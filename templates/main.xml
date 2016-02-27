@@ -1,2 +1,13 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
+	<div class="header">
+		<div class="header__appname">BloodyDefense</div>
+	</div>
+	<div class="main">
+		<div class="main__name"> Main Menu </div>
+		<div class="buttons">
+			<div class="buttons__button" onclick="location.href='#login'">LOGIN</div>
+			<div class="buttons__button" onclick="location.href='#game'">PLAY</div>
+			<div class="buttons__button" onclick="location.href='#scoreboard'">SCORES</div>
+		</div>
+	</div>
 </fest:template>

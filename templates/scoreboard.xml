@@ -1,2 +1,24 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
+	<div class="header">
+		<div class="header__appname">BloodyDefense</div>
+	</div>
+	<div class="main">
+		<div class="main__name"> Main Menu </div>
+		<div class="board">
+			<ol class="board__list">
+				<fest:for iterate="json.players.models" index="i">
+					<li class="board__list__item">
+						<fest:value>json.players.models[i].attributes.name</fest:value>
+						<fest:space />
+						with a score of
+						<fest:space />
+						<fest:value>json.players.models[i].attributes.score</fest:value>!
+					</li>
+				</fest:for>
+			</ol>
+			<div class="buttons">
+				<div class="buttons__button" onclick="location.href='#main'">BACK</div>
+			</div>
+		</div>
+	</div>
 </fest:template>
