@@ -7,12 +7,12 @@
 		<div class="board">
 			<ol class="board__list">
 				<fest:for iterate="json.players.models" index="i">
-					<li class="board__list__item">
-						<fest:value>json.players.models[i].attributes.name</fest:value>
+					<li class="board__item">
+						<fest:value>json.players.models[i].get('name')</fest:value>
 						<fest:space />
 						with a score of
 						<fest:space />
-						<fest:value>json.players.models[i].attributes.score</fest:value>!
+						<fest:value>json.players.models[i].get('score')</fest:value>!
 					</li>
 				</fest:for>
 			</ol>

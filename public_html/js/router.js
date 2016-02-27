@@ -1,16 +1,10 @@
-define([
-    'backbone',
-    'views/main',
-    'views/login',
-    'views/game',
-    'views/scoreboard',
-], function(
-    Backbone,
-    mainView,
-    loginView,
-    gameView,
-    scoreboardView
-){
+define(function(require){
+    
+    var Backbone = require('backbone');
+        mainView = require('views/main'),
+        loginView = require('views/login'),
+        gameView = require('views/game'),
+        scoreboardView = require('views/scoreboard');
 
     var Router = Backbone.Router.extend({
         routes: {
@@ -20,24 +14,20 @@ define([
             '*default': 'defaultActions'
         },
         defaultActions: function () {
-            console.log('the #main route');
-            mainView.render();
-            $('#page').html(mainView.$el.html());
+            console.log(mainView);
+            $('#page').html(mainView.render().$el);
         },
         scoreboardAction: function () {
             console.log('the #scoreboard route');
-            scoreboardView.render();
-            $('#page').html(scoreboardView.$el.html());
+            $('#page').html(scoreboardView.render().$el);
         },
         gameAction: function () {
             console.log('the #game route');
-            gameView.render();
-            $('#page').html(gameView.$el.html());
+            $('#page').html(gameView.render().$el);
         },
         loginAction: function () {
             console.log('the #login route');
-            loginView.render();
-            $('#page').html(loginView.$el.html());
+            $('#page').html(loginView.render().$el);
         }
     });
 
