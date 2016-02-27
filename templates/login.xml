@@ -12,8 +12,12 @@
 				<input type="password" class="form__password" placeholder="Password"></input>
 			</div>
 			<div class="buttons">
-				<div class="buttons__button" onClick="document.forms['loginForm'].submit();">Submit</div>
-				<div class="buttons__button" onClick="location.href='#main'">Back</div>
+				<div class="buttons__button">
+					<button type="submit">Submit</button>
+				</div>
+				<div class="buttons__button">
+					<a href="#main">Back</a>
+				</div>
 			</div>
 		</form>
 	</div>

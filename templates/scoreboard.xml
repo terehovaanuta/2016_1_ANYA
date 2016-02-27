@@ -17,7 +17,7 @@
 				</fest:for>
 			</ol>
 			<div class="buttons">
-				<div class="buttons__button" onclick="location.href='#main'">BACK</div>
+				<div class="buttons__button"><a href="#main">BACK</a></div>
 			</div>
 		</div>
 	</div>
