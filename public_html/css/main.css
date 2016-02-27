@@ -84,18 +84,19 @@ button {
 	width: 100%;
 }
 
-.form__username {
+.form__input {
 	padding: 5px;
 	font-size: 28px;
 	border-radius: 5px;
 	font-family: 'Conv_rodchenko';
 }
 
+.form__username {
+	padding: 5px;
+}
+
 .form__password {
 	padding: 5px;
-	font-size: 28px;
-	border-radius: 5px;
-	font-family: 'Conv_rodchenko';
 }
 
 .board {

@@ -6,13 +6,13 @@
 		<div class="main__name"> Main Menu </div>
 		<div class="board">
 			<ol class="board__list">
-				<fest:for iterate="json.players.models" index="i">
+				<fest:for iterate="json.players.models" index="i" value="model">
 					<li class="board__item">
-						<fest:value>json.players.models[i].get('name')</fest:value>
+						<fest:value>model.get('name')</fest:value>
 						<fest:space />
 						with a score of
 						<fest:space />
-						<fest:value>json.players.models[i].get('score')</fest:value>!
+						<fest:value>model.get('score')</fest:value>!
 					</li>
 				</fest:for>
 			</ol>

@@ -8,7 +8,9 @@ define([
 
     var PlayerCollection = Backbone.Collection.extend({
     	model: PlayerModel,
-    	comparator: 'score'
+    	comparator: function (player) {
+            return - player.get('score');
+        }
     });
 
     return new PlayerCollection([
