@@ -44,7 +44,7 @@ module.exports = function (grunt) {
                 options: {
                     template: function (data) {
                         return grunt.template.process(
-                            'define(function () { return <%= contents %> ; });',
+                            'var <%= name %>Tmpl = <%= contents %> ;',
                             {data: data}
                         );
                     }
@@ -56,7 +56,6 @@ module.exports = function (grunt) {
 
     // подключить все необходимые модули
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-qunit');
     grunt.loadNpmTasks('grunt-concurrent');
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-fest');

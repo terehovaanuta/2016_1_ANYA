@@ -1,13 +1,3 @@
-<fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
-	<div class="header">
-		<div class="header__appname">BloodyDefense</div>
-	</div>
-	<div class="main">
-		<div class="main__name"> Main Menu </div>
-		<div class="buttons">
-			<div class="buttons__button"><a href="#login">LOGIN</a></div>
-			<div class="buttons__button"><a href="#game">PLAY</a></div>
-			<div class="buttons__button"><a href="#scoreboard">SCORES</a></div>
-		</div>
-	</div>
+<fest:template xmlns:fest="http://fest.mail.ru">
+    <div id="main"></div>
 </fest:template>
