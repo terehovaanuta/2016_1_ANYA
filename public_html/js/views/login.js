@@ -13,9 +13,8 @@ define([
         tagName: 'div',
 
         events: {
-            "click .button_submit": "validate",
-            //"submit .button_submit": "validate",
-            "submit .login": "validate",
+            //"click .button_submit": "validate",
+            "submit": "validate",
             "change .login": "changeLogin",
             "change .password": "changePassword"
         },
@@ -61,6 +60,9 @@ define([
             this.model = new LoginUser();
             
             this.model.on("invalid", function(model, error) {
+                this.resetError(this.elems.username.parentNode);
+                this.resetError(this.elems.password.parentNode);
+                
                 if (error.username) {
                     this.showError(this.elems.username.parentNode, "No username!");
                 }
