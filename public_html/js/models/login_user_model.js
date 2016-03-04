@@ -12,10 +12,10 @@ define([
 		validate: function(attrs, options) {
 			console.log(attrs);
 			var listErrors = {};
-			if (attrs.username == '') {
+			if (attrs.username === '') {
 				listErrors.username = true;
 			}
-			if (attrs.password == '') {
+			if (attrs.password === '') {
 				listErrors.password = true;
 			}
 			if (listErrors) {
