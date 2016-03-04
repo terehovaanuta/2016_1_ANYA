@@ -1,3 +1,5 @@
-<fest:template xmlns:fest="http://fest.mail.ru">
-    <div id="game"></div>
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
+	<div class="buttons">
+		<div class="buttons__button"><a href="#main">Go Back</a></div>
+	</div>
 </fest:template>
