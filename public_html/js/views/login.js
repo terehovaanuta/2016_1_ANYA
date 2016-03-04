@@ -14,6 +14,8 @@ define([
 
         events: {
             "click .button_submit": "validate",
+            //"submit .button_submit": "validate",
+            "submit .login": "validate",
             "change .login": "changeLogin",
             "change .password": "changePassword"
         },
@@ -57,22 +59,16 @@ define([
         render: function () {
             this.$el.html(this.template());
             this.model = new LoginUser();
-            var this_ = this;
-            //var request = function (model, score);
-            //var binder = request.bind(this)
-
+            
             this.model.on("invalid", function(model, error) {
-            //this.model.on("invalid", binder {
-                console.log("error");
                 if (error.username) {
-                    this_.showError(this_.elems.username.parentNode, "No username!");
-                    //this.showError(this.elems.username.parentNode, "No username!");
+                    this.showError(this.elems.username.parentNode, "No username!");
                 }
                 if (error.password) {
-                    this_.showError(this_.elems.password.parentNode, "No password!");
-                    //this.showError(this.elems.password.parentNode, "No password!");
+                    this.showError(this.elems.password.parentNode, "No password!");
                 }
-            });
+            }.bind(this));
+
             return this;
         },
         show: function () {
