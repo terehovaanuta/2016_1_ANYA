@@ -4,12 +4,10 @@ define(function(require){
         mainView = require('views/main'),
         loginView = require('views/login'),
         gameView = require('views/game'),
-       // headpiece = require('views/headpiece'),
         scoreboardView = require('views/scoreboard');
 
     var Router = Backbone.Router.extend({
         routes: {
-           // 'headpiece': 'headpieceAction'
             'scoreboard': 'scoreboardAction',
             'game': 'gameAction',
             'login': 'loginAction',
@@ -24,10 +22,6 @@ define(function(require){
             $('#page').html(scoreboardView.render().$el);
         },
 
-        /*headpieceAction: function () {
-            console.log('the #headpiece route');
-            $('#page').html(headpieceView.render().$el);
-        },*/
         gameAction: function () {
             console.log('the #game route');
             $('#page').html(gameView.render().$el);

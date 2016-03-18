@@ -28,5 +28,3 @@ define([
 
 	return LoginUserModel;
 });
-
-//session.js переименовать
