@@ -50,7 +50,12 @@ module.exports = function (grunt) {
                     }
                 }
             }
+        },
+
+        qunit: {
+            all: ['./public_html/tests/index.html']        
         }
+
 
     });
 
