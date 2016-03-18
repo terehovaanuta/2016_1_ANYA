@@ -7,7 +7,6 @@ define([
     tmpl,
     LoginUser
 ){
-
     var LoginView = Backbone.View.extend({
 
         tagName: 'div',

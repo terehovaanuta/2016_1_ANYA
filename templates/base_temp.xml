@@ -1,0 +1,7 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
+	<div class="header">
+		<div class="header__appname">BloodyDefense</div>
+	</div>
+	<fest:param name="doctype">html</fest:param>
+</fest:template>
+	

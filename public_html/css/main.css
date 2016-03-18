@@ -19,6 +19,7 @@ body {
 	font-size: 40px;
 	padding: 20px 0px 20px 0px;
 	width: 100%;
+    
 }
 
 .main {
@@ -127,3 +128,4 @@ button {
 .error-message {
 	width: 100px;
 }
+
