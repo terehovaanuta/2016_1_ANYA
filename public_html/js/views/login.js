@@ -60,8 +60,8 @@ define([
             
             this.model.on("invalid", function(model, errors) {
                 errors.forEach(function (error) {
-                    name = error['field'];
-                    message = error['message'];
+                    name = error.field;
+                    message = error.message;
                     this.resetError(this.elems[name].parentNode);
                     if (name) {
                         this.showError(this.elems[name].parentNode, message);
