@@ -22,10 +22,8 @@ define([
 					listErrors.push({field: name, message: attrs.errorNames[name]});
 				}
 			});
-			if (listErrors != []) {
-				console.log(listErrors);
-				return listErrors;
-			}
+			console.log(listErrors);
+			return listErrors;
 
 		}
 	});
