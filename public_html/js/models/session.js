@@ -7,19 +7,18 @@ define([
 	var LoginUserModel = Backbone.Model.extend({
 		defaults: {
 			username: '',
-			password: '',
-			errorNames: {
-				username: 'No login',
-				password: 'No password'
-			}
+			password: ''
 		},
 		
 		validate: function(attrs, options) {
 			listErrors = [];
 			fields = ['username', 'password'];
+			errors = {};
+			errors.username = 'No login';
+			errors.password = 'No password';
 			fields.forEach(function (name) {
 				if (attrs[name] === '') {
-					listErrors.push({field: name, message: attrs.errorNames[name]});
+					listErrors.push({field: name, message: errors[name]});
 				}
 			});
 			console.log(listErrors);
