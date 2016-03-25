@@ -17,20 +17,32 @@ define([
             "change .password": "changePassword"
         },
 
-        
-        showError: function (container, errorMessage) {
-            container.className = 'error';
-            var msgElem = document.createElement('span');
-            msgElem.className = "error-message";
-            msgElem.innerHTML = errorMessage;
-            container.appendChild(msgElem);
+
+        showError: function (container) {
+            container.addClass('error');
+            var msgElem = container.children('.error');
+            console.log(msgElem);
+            msgElem.removeClass('error_hidden');
+            msgElem.addClass('error_shown');
         },
 
         resetError: function (container) {
-            container.className = '';
-            if (container.lastChild.className == "error-message") {
-                container.removeChild(container.lastChild)
-            } 
+            container.removeClass('error');
+            var msgElem = container.children('.error');
+            msgElem.removeClass('error_shown');
+            msgElem.addClass('error_hidden');
+        },
+
+        handleErrors: function(model, error) {
+            console.log(error);
+            this.resetError(this.$el.find('.form__username'));
+            this.resetError(this.$el.find('.form__password'));
+            if (error.username) {
+                this.showError(this.$el.find('.form__username'));
+            }
+            if (error.password) {
+                this.showError(this.$el.find('.form__password'));
+            }
         },
 
         validate: function (event) {
@@ -49,27 +61,12 @@ define([
 
         template: tmpl,
         initialize: function () {
-            // TODO
-            
+            this.model = new LoginUser();
+            this.model.on("invalid", this.handleErrors.bind(this));
         },
-        
+
         render: function () {
             this.$el.html(this.template());
-
-            this.model = new LoginUser();
-            
-            this.model.on("invalid", function(model, errors) {
-                errors.forEach(function (error) {
-                    name = error.field;
-                    message = error.message;
-                    this.resetError(this.elems[name].parentNode);
-                    if (name) {
-                        this.showError(this.elems[name].parentNode, message);
-                    }
-                }, this);
-                
-            }.bind(this));
-
             return this;
         },
         show: function () {
@@ -81,7 +78,7 @@ define([
 
     });
 
-    
+
 
     return new LoginView();
 });

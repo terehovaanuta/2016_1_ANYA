@@ -19,7 +19,7 @@ body {
 	font-size: 40px;
 	padding: 20px 0px 20px 0px;
 	width: 100%;
-    
+
 }
 
 .main {
@@ -41,7 +41,7 @@ body {
 }
 
 .buttons__button {
-	text-align: center; 
+	text-align: center;
 	font-size: 27px;
 	padding: 7px 0px 5px 0px;
 	border: 7px solid white;
@@ -125,7 +125,10 @@ button {
 	color: red;
 }
 
-.error-message {
-	width: 100px;
+.error_hidden {
+	display: none;
 }
 
+.error_shown {
+	width: 100px;
+ }

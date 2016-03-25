@@ -9,20 +9,19 @@ define([
 			username: '',
 			password: ''
 		},
-		
+
 		validate: function(attrs, options) {
-			listErrors = [];
 			fields = ['username', 'password'];
 			errors = {};
-			errors.username = 'No login';
-			errors.password = 'No password';
 			fields.forEach(function (name) {
 				if (attrs[name] === '') {
-					listErrors.push({field: name, message: errors[name]});
+					errors[name] = true;
 				}
+                else {
+                    errors[name] = false;
+                }
 			});
-			console.log(listErrors);
-			return listErrors;
+			return errors;
 
 		}
 	});
