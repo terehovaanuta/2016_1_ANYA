@@ -5,12 +5,12 @@
 		<div class="main__name">Signing in</div>
 		<form class="form" name="loginForm">
 			<div class="form__username">
-				<input name="username" type="text" class="login form__input" placeholder="Username"/>
-				<span class='error error_hidden'>No login!</span>
+				<input name="username" type="text" class="form__input" placeholder="Username"/>
+				<span class='form__error'>No login!</span>
 			</div>
 			<div class="form__password">
-				<input name="password" type="password" class="password form__input" placeholder="Password"/>
-				<span class='error error_hidden'>No password!</span>
+				<input name="password" type="password" class="form__input" placeholder="Password"/>
+				<span class='form__error'>No password!</span>
 			</div>
 			<div class="buttons">
 				<div class="buttons__button">

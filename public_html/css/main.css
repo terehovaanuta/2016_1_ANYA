@@ -116,19 +116,21 @@ button {
 	padding: 3px 0px 3px 0px;
 }
 
-.error input,
-.error textarea {
-	border: 1px solid red;
+.form__error input,
+.form__error textarea {
+	display: block;
 }
 
-.error {
+.form__error {
 	color: red;
-}
-
-.error_hidden {
 	display: none;
 }
 
-.error_shown {
-	width: 100px;
+.form__error_shown input,
+.form__error_shown textarea {
+	border: 1px solid red;
+}
+
+.form__error_shown {
+	display: block;
  }

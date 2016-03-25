@@ -12,25 +12,21 @@ define([
         tagName: 'div',
 
         events: {
-            "submit": "validate",
-            "change .login": "changeLogin",
-            "change .password": "changePassword"
+            "submit": "validate"
         },
 
 
         showError: function (container) {
-            container.addClass('error');
-            var msgElem = container.children('.error');
+            container.addClass('form__error_shown');
+            var msgElem = container.children('.form__error');
             console.log(msgElem);
-            msgElem.removeClass('error_hidden');
-            msgElem.addClass('error_shown');
+            msgElem.addClass('form__error_shown');
         },
 
         resetError: function (container) {
-            container.removeClass('error');
-            var msgElem = container.children('.error');
-            msgElem.removeClass('error_shown');
-            msgElem.addClass('error_hidden');
+            container.removeClass('form__error_shown');
+            var msgElem = container.children('.form__error');
+            msgElem.removeClass('form__error_shown');
         },
 
         handleErrors: function(model, error) {
