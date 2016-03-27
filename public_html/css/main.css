@@ -126,8 +126,7 @@ button {
 	display: none;
 }
 
-.form__error_shown input,
-.form__error_shown textarea {
+.form__error_redborders {
 	border: 1px solid red;
 }
 
