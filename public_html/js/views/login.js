@@ -18,17 +18,18 @@ define([
 
         showError: function (container) {
             container.addClass('form__error_shown');
-            var msgElem = container.children('span.form__error');
-            var formElem = container.children('input.form__error, textarea.form__error');
+            var msgElem = container.children('.form__error');
+            var formElem = container.children('.form__input');
             msgElem.addClass('form__error_shown');
-            formElem.addClass('form__error_redborders');
+            formElem.addClass('form__input_error');
         },
 
         resetError: function (container) {
             container.removeClass('form__error_shown');
-            var formElem = container.children('input.form__error, textarea.form__error');
+            var msgElem = container.children('.form__error');
+            var formElem = container.children('.form__input');
             msgElem.removeClass('form__error_shown');
-            formElem.removeClass('form__error_redborders');
+            formElem.removeClass('form__input_error');
         },
 
         handleErrors: function(model, error) {
