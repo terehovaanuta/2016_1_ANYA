@@ -9,11 +9,12 @@ define([
 ){
     var LoginView = Backbone.View.extend({
 
-        tagName: 'div',
+        className: 'login-view',
 
         events: {
             "submit": "validate"
         },
+        rendered: false,
 
 
         showError: function (container) {
@@ -66,13 +67,18 @@ define([
 
         render: function () {
             this.$el.html(this.template());
+            this.rendered = true;
             return this;
         },
         show: function () {
-            // TODO
+            if (!this.rendered) {
+                this.render();
+            }
+            this.trigger('show');
+            this.$el.children().show();
         },
         hide: function () {
-            // TODO
+            this.$el.children().hide();
         },
 
     });

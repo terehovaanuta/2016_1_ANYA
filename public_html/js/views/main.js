@@ -8,21 +8,28 @@ define([
 
     var MainView = Backbone.View.extend({
 
+        className: 'main-view',
+
         template: tmpl,
+        rendered: false,
         initialize: function () {
             // TODO
         },
         render: function () {
-            // TODO
             this.$el.html(this.template());
+            this.rendered = true;
             return this;
         },
         show: function () {
-            // TODO
+            if (!this.rendered) {
+                this.render();
+            }
+            this.trigger('show');
+            this.$el.children().show();
         },
         hide: function () {
-            // TODO
-        }
+            this.$el.children().hide();
+        },
 
     });
 
