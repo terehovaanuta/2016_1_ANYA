@@ -7,38 +7,10 @@ define([
 ){
     var viewManager = {
         views: [],
-        //
-        // initialize: function () {
-        //     console.log(this.views);
-        //     for (var view in this.views) {
-        //         view.render();
-        //     }
-
-            // this.listenTo(mainView, 'show', this.show.bind(mainView));
-            // this.listenTo(loginView, 'show', this.show.bind(loginView));
-            // this.listenTo(gameView, 'show', this.show.bind(gameView));
-            // this.listenTo(scoreboardView, 'show', this.show.bind(scoreboardView));
-        // },
-
-        html: function () {
-            var retVal = '';
-            for (var viewIndex in this.views) {
-                retVal += this.views[viewIndex].$el[0].outerHTML;
-                //console.log(this.views[viewIndex].$el);
-            }
-            return retVal;
-        },
-
-        // show: function (view) {
-        //     mainView.hide();
-        //     loginView.hide();
-        //     gameView.hide();
-        //     scoreboardView.hide();
-        //     view.show();
-        // },
 
         addView: function(view) {
-            if (this.views.indexOf(view) == -1) {
+            if (!($('#page').children('.' + view.className).length)) {
+                $('#page').append(view.$el);
                 this.views.push(view);
                 console.log(this.views);
                 this.listenTo(view, 'show', function (thisView, object) {
@@ -51,7 +23,6 @@ define([
                     }
                 }(view, this))
             }
-            // this.initialize();
         }
 
     };

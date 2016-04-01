@@ -18,7 +18,6 @@ define(function(require){
         manageView: function (view) {
             viewManager.addView(view);
             view.show();
-            $('#page').html(viewManager.html());
         },
 
         defaultActions: function () {
