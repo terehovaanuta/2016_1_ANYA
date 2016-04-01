@@ -1,13 +1,12 @@
 define([
-    'backbone',
-    'underscore'
+    'backbone'
 ], function(
-    Backbone,
-    _
+    Backbone
 ){
-    var viewManager = {
+    var viewManager = Backbone.View.extend({
+        className: 'page',
         views: [],
-        listener: function (thisView) {
+        showView: function (thisView) {
             for (var viewIndex in this.views) {
                 if (this.views[viewIndex] !== thisView) {
                     this.views[viewIndex].hide();
@@ -17,14 +16,12 @@ define([
         addView: function(view) {
             if (this.views.indexOf(view) == -1) {
                 this.views.push(view.render());
-                $('#page').append(view.$el);
-                this.listenTo(view, 'show', this.listener.bind(this, view));
+                this.$el.append(view.$el);
+                this.listenTo(view, 'show', this.showView.bind(this, view));
             }
         }
 
-    };
+    });
 
-    _.extend(viewManager, Backbone.Events);
-
-    return viewManager;
+    return new viewManager();
 });

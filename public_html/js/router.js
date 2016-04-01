@@ -16,6 +16,9 @@ define(function(require){
         },
 
         manageView: function (view) {
+            if ($('body').children().length == 0) {
+                $('body').append(viewManager.$el);
+            }
             viewManager.addView(view);
             view.show();
         },
