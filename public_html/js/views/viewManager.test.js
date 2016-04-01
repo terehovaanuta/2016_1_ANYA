@@ -32,4 +32,5 @@ define(function (require) {
         assert.notOk(viewManager.views.length != 4 || viewManager.views[viewManager.views.length - 1] != scoreboardView, 'Fourth addition ok');
 
     });
+    
 });
