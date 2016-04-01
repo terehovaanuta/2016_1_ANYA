@@ -14,7 +14,6 @@ define([
         events: {
             "submit": "validate"
         },
-        rendered: false,
 
 
         showError: function (container) {
@@ -67,18 +66,14 @@ define([
 
         render: function () {
             this.$el.html(this.template());
-            this.rendered = true;
             return this;
         },
         show: function () {
-            if (!this.rendered) {
-                this.render();
-            }
             this.trigger('show');
-            this.$el.children().show();
+            this.$el.show();
         },
         hide: function () {
-            this.$el.children().hide();
+            this.$el.hide();
         },
 
     });
