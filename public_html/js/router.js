@@ -1,6 +1,6 @@
 define(function(require){
 
-    var Backbone = require('backbone');
+    var Backbone = require('backbone'),
         mainView = require('views/main'),
         loginView = require('views/login'),
         gameView = require('views/game'),

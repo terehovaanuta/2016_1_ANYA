@@ -9,10 +9,9 @@ define([
         views: [],
 
         addView: function(view) {
-            if (!($('#page').children('.' + view.className).length)) {
+            if (this.views.indexOf(view) == -1) {
                 $('#page').append(view.$el);
                 this.views.push(view);
-                console.log(this.views);
                 this.listenTo(view, 'show', function (thisView, object) {
                     return function () {
                         for (var viewIndex in object.views) {
