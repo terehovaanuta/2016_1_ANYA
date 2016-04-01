@@ -16,8 +16,8 @@ define([
         },
         addView: function(view) {
             if (this.views.indexOf(view) == -1) {
-                $('#page').append(view.$el);
                 this.views.push(view.render());
+                $('#page').append(view.$el);
                 this.listenTo(view, 'show', this.listener.bind(this, view));
             }
         }
