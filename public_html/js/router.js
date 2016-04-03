@@ -16,7 +16,7 @@ define(function(require){
         },
 
         manageView: function (view) {
-            if ($('body').children().length == 0) {
+            if ($('body').find(viewManager.$el).length) {
                 $('body').append(viewManager.$el);
             }
             viewManager.addView(view);
