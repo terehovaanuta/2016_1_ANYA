@@ -4,7 +4,7 @@ define([
     Backbone
 ){
     var viewManager = Backbone.View.extend({
-        className: 'page',
+        el: '#page',
         views: [],
         showView: function (thisView) {
             for (var viewIndex in this.views) {
