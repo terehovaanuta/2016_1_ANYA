@@ -15,6 +15,7 @@ define([
             "submit": "validate"
         },
 
+        erratives: ['username', 'password'],
 
         showError: function (container) {
             container.addClass('form__error_shown');
