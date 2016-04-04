@@ -1,17 +1,18 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
 	<fest:include src="./base_temp.xml"/>
 
+	<fest:set name="input">
+		<div class="form__{params.field}">
+			<input name="{params.field}" type="{params.field}" class="form__input" placeholder="{params.field}"/>
+			<span class='form__error'>No {params.field}!</span>
+		</div>
+	</fest:set>
+
 	<div class="main">
 		<div class="main__name">Signing in</div>
 		<form class="form" name="loginForm">
-			<div class="form__username">
-				<input name="username" type="text" class="form__input" placeholder="Username"/>
-				<span class='form__error'>No login!</span>
-			</div>
-			<div class="form__password">
-				<input name="password" type="password" class="form__input" placeholder="Password"/>
-				<span class='form__error'>No password!</span>
-			</div>
+			<fest:get name="input">{field: "username"}</fest:get>
+			<fest:get name="input">{field: "password"}</fest:get>
 			<div class="buttons">
 				<div class="buttons__button">
 					<button type="submit">Submit</button>

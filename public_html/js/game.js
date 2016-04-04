@@ -63,7 +63,7 @@ define ([
                     explosion.scale.x = 0.2;
                     explosion.scale.y = 0.2;
                     var killed = false;
-                    //stage.addChild(explosion);
+                    stage.addChild(explosion);
                     function animateExplosion() {
                         requestAnimationFrame(animateExplosion);
                         explosion.scale.x += 0.1;
@@ -86,7 +86,7 @@ define ([
             tower.removeListener('mousedown');
             setTimeout(function () {
                 tower.on('mousedown', shoot);
-            }, 5000);
+            }, 3000);
         }
 
         stage.addChild(tower);
