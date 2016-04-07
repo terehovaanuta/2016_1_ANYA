@@ -32,7 +32,7 @@ define([
             this.resetErrors();
             for (var field in this.erratives) {
                 if (error[this.erratives[field]]) {
-                    this.showError(this.$el.find('.form__' + this.erratives[field]));
+                    this.showError(this.$('.form__' + this.erratives[field]));
                 }
             }
         },
@@ -42,7 +42,7 @@ define([
                 event.preventDefault();
             }
 
-            this.elems = $('form')[0].elements;
+            this.elems = this.$('form')[0].elements;
 
             this.model.save({
                 'username': this.elems.username.value,
