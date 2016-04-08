@@ -54,6 +54,7 @@ define([
         initialize: function () {
             this.model = new LoginUser();
             this.model.on("invalid", this.handleErrors.bind(this));
+            Backbone.sync = this.model.login;
         },
 
         render: function () {

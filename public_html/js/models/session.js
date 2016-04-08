@@ -5,25 +5,37 @@ define([
 ){
 
 	var LoginUserModel = Backbone.Model.extend({
-		defaults: {
+
+        server: '0.0.0.0:5282',
+
+        defaults: {
 			username: '',
 			password: ''
 		},
 
 		validate: function(attrs, options) {
-			fields = ['username', 'password'];
-			errors = {};
+			var fields = ['username', 'password'];
+			var errors = {};
+            var hadErrors = false;
 			fields.forEach(function (name) {
 				if (attrs[name] === '') {
 					errors[name] = true;
+                    hadErrors = true;
 				}
                 else {
                     errors[name] = false;
                 }
 			});
-			return errors;
+            if (hadErrors)
+    			return errors;
 
-		}
+		},
+
+        login: function (method, model, options) {
+            console.log(method);
+            console.log(model);
+            console.log(options);
+        }
 	});
 
 	return LoginUserModel;
