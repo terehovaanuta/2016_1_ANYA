@@ -60,7 +60,29 @@ define([
         },
 
         login: function (model, uname, pass) {
-            console.log('logging');
+            var request = new XMLHttpRequest();
+
+            request.open('PUT', this.server + '/api/session');
+
+            request.setRequestHeader('Content-Type', 'application/json');
+
+            request.onreadystatechange = function () {
+              if (this.readyState === 4) {
+                if (this.status == 200) {
+                    this.id = JSON.parse(this.responseText).id;
+                }
+                else {
+                    alert(400);
+                }
+              }
+            };
+
+            var body = {
+              'login': uname,
+              'password': pass
+            };
+
+            request.send(JSON.stringify(body));
         },
 
         edit: function (model, uname, pass) {

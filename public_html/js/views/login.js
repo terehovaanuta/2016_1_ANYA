@@ -47,12 +47,9 @@ define([
                 'username': this.elems.username.value,
                 'password': this.elems.password.value
             }
-            if (this.$('input[type=hidden]').length) {
-                this.model.save(data);
-            }
-            else {
-                this.model.fetch(data);
-            }
+
+            this.model.fetch(data);
+
         },
 
         template: tmpl,
@@ -63,7 +60,7 @@ define([
         },
 
         render: function () {
-            this.$el.html(this.template({register: !this.model.isAuthed()}));
+            this.$el.html(this.template());
             return this;
         },
         show: function () {

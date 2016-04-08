@@ -3,18 +3,7 @@
 	<fest:include src="./input.xml"/>
 
 	<div class="main">
-		<div class="main__name">Signing<fest:space></fest:space>
-			<fest:choose>
-			    <fest:when test="json.register">
-			        <fest:text>up</fest:text>
-			    </fest:when>
-
-			    <fest:otherwise>
-			        <fest:text>in</fest:text>
-			    </fest:otherwise>
-			</fest:choose>
-
-			</div>
+		<div class="main__name">Signing in</div>
 		<form class="form" name="loginForm">
 			<fest:get name="input">{field: "username"}</fest:get>
 			<fest:get name="input">{field: "password"}</fest:get>
