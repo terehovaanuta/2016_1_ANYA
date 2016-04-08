@@ -31,11 +31,45 @@ define([
 
 		},
 
-        login: function (method, model, options) {
-            console.log(method);
-            console.log(model);
-            console.log(options);
-        }
+        sync: function (method, model, options) {
+            console.log(model, options);
+            var newLogin = options.get('username');
+            var newPass = options.get('password');
+
+            switch (method) {
+                case 'create':
+                    this.register(model, newLogin, newPass);
+                    break;
+                case 'read':
+                    this.login(model, newLogin, newPass);
+                    break;
+                case 'update':
+                    this.edit(model, newLogin, newPass);
+                    break;
+                case 'delete':
+                    this.drop(model);
+                    break;
+                default:
+
+            }
+        },
+
+        register: function (model, uname, pass) {
+
+        },
+
+        login: function (model, uname, pass) {
+
+        },
+
+        edit: function (model, uname, pass) {
+
+        },
+
+        drop: function (model) {
+
+        },
+
 	});
 
 	return LoginUserModel;

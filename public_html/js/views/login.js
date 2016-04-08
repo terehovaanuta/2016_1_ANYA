@@ -44,7 +44,7 @@ define([
 
             this.elems = this.$('form')[0].elements;
 
-            this.model.save({
+            this.model.fetch({
                 'username': this.elems.username.value,
                 'password': this.elems.password.value
             });
@@ -54,7 +54,7 @@ define([
         initialize: function () {
             this.model = new LoginUser();
             this.model.on("invalid", this.handleErrors.bind(this));
-            Backbone.sync = this.model.login;
+            Backbone.sync = this.model.askBackend;
         },
 
         render: function () {
