@@ -6,7 +6,7 @@ define([
 
 	var LoginUserModel = Backbone.Model.extend({
 
-        server: '0.0.0.0:5282',
+        server: 'http://0.0.0.0:5282',
 
         defaults: {
 			username: '',
@@ -32,9 +32,9 @@ define([
 		},
 
         sync: function (method, model, options) {
-            console.log(model, options);
-            var newLogin = options.get('username');
-            var newPass = options.get('password');
+
+            var newLogin = options.username;
+            var newPass = options.password;
 
             switch (method) {
                 case 'create':
@@ -50,25 +50,42 @@ define([
                     this.drop(model);
                     break;
                 default:
+                    break;
 
             }
         },
 
         register: function (model, uname, pass) {
-
+            console.log('regging');
         },
 
         login: function (model, uname, pass) {
-
+            console.log('logging');
         },
 
         edit: function (model, uname, pass) {
-
+            console.log('editing');
         },
 
         drop: function (model) {
-
+            console.log('dropping');
         },
+
+        isAuthed: function (model) {
+            var request = new XMLHttpRequest();
+
+            request.open('GET', this.server);
+
+            request.onreadystatechange = (function (model) {
+                if (this.readyState === 4) {
+                    if (this.status != 200) {
+                        model.set({id: undefined});
+                    }
+                }
+            }).bind(model);
+
+            request.send();
+        }
 
 	});
 

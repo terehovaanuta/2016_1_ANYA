@@ -1,16 +1,38 @@
-<fest:template xmlns:fest="http://fest.mail.ru">
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
 	<fest:include src="./base_temp.xml"/>
 	<fest:include src="./input.xml"/>
 
 	<div class="main">
-		<div class="main__name">Signing in</div>
+		<div class="main__name">Signing<fest:space></fest:space>
+			<fest:choose>
+			    <fest:when test="json.register">
+			        <fest:text>up</fest:text>
+			    </fest:when>
+
+			    <fest:otherwise>
+			        <fest:text>in</fest:text>
+			    </fest:otherwise>
+			</fest:choose>
+
+			</div>
 		<form class="form" name="loginForm">
 			<fest:get name="input">{field: "username"}</fest:get>
 			<fest:get name="input">{field: "password"}</fest:get>
 			<div class="buttons">
-				<div class="buttons__button">
-					<button type="submit">Submit</button>
-				</div>
+				<fest:choose>
+				    <fest:when test="json.register">
+						<div class="buttons__button">
+							<input type="hidden" value="register"></input>
+							<button type="submit">Register</button>
+						</div>
+				    </fest:when>
+
+				    <fest:otherwise>
+						<div class="buttons__button">
+							<button type="submit">Submit</button>
+						</div>
+				    </fest:otherwise>
+				</fest:choose>
 				<div class="buttons__button">
 					<a href="#main">Back</a>
 				</div>

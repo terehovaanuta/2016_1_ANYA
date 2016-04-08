@@ -43,11 +43,16 @@ define([
             }
 
             this.elems = this.$('form')[0].elements;
-
-            this.model.fetch({
+            var data = {
                 'username': this.elems.username.value,
                 'password': this.elems.password.value
-            });
+            }
+            if (this.$('input[type=hidden]').length) {
+                this.model.save(data);
+            }
+            else {
+                this.model.fetch(data);
+            }
         },
 
         template: tmpl,
@@ -58,7 +63,7 @@ define([
         },
 
         render: function () {
-            this.$el.html(this.template());
+            this.$el.html(this.template({register: !this.model.isAuthed()}));
             return this;
         },
         show: function () {
