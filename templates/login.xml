@@ -11,14 +11,13 @@
 				<fest:choose>
 				    <fest:when test="json.register">
 						<div class="buttons__button">
-							<input type="hidden" value="register"></input>
 							<button type="submit">Register</button>
 						</div>
 				    </fest:when>
 
 				    <fest:otherwise>
 						<div class="buttons__button">
-							<button type="submit">Submit</button>
+							<button type="submit">Sign in</button>
 						</div>
 				    </fest:otherwise>
 				</fest:choose>

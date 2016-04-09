@@ -1,15 +1,15 @@
 define([
     'backbone',
     'tmpl/login',
-    'models/session'
+    'models/registration'
 ], function(
     Backbone,
     tmpl,
     LoginUser
 ){
-    var LoginView = Backbone.View.extend({
+    var RegisterView = Backbone.View.extend({
 
-        className: 'login-view',
+        className: 'register-view',
 
         events: {
             "submit": "validate"
@@ -60,7 +60,7 @@ define([
         },
 
         render: function () {
-            this.$el.html(this.template({register: false}));
+            this.$el.html(this.template({register: true}));
             return this;
         },
         show: function () {
@@ -74,7 +74,5 @@ define([
 
     });
 
-
-
-    return new LoginView();
+    return new RegisterView();
 });

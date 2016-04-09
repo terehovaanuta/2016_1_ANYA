@@ -36,13 +36,14 @@ define([
 
             var newLogin = options.username;
             var newPass = options.password;
+            var newEmail = options.email;
 
             switch (method) {
                 case 'create':
-                    this.register(model, newLogin, newPass);
+                    // this.register(model, newLogin, newPass, newEmail);
                     break;
                 case 'read':
-                    this.login(model, newLogin, newPass);
+                    this.register(model, newLogin, newPass, newEmail);
                     break;
                 case 'update':
                     this.edit(model, newLogin, newPass);
@@ -56,14 +57,10 @@ define([
             }
         },
 
-        register: function (model, uname, pass) {
-            console.log('regging');
-        },
-
-        login: function (model, uname, pass) {
+        register: function (model, uname, pass, email) {
             var request = new XMLHttpRequest();
 
-            request.open('PUT', this.server + '/backend/session');
+            request.open('PUT', this.server + '/backend/user');
 
             request.setRequestHeader('Content-Type', 'application/json');
 
@@ -76,14 +73,15 @@ define([
                         alert(this.readyState + '-' + this.status + 'returned with "' + this.responseText + '" message');
                     }
                 }
-
               }).bind(request, model);
 
             var body = {
               'login': uname,
-              'password': pass
+              'password': pass,
+              'email': email
             };
             request.send(JSON.stringify(body));
+            console.log(this);
         },
 
         edit: function (model, uname, pass) {
