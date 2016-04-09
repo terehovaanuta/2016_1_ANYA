@@ -72,7 +72,7 @@ define([
                     this.id = JSON.parse(this.responseText).id;
                 }
                 else {
-                    alert(400);
+                    alert(this.status + 'returned with "' + this.responseText + '" message');
                 }
               }
             };
@@ -81,7 +81,6 @@ define([
               'login': uname,
               'password': pass
             };
-
             request.send(JSON.stringify(body));
         },
 
