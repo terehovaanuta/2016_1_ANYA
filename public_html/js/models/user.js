@@ -10,27 +10,27 @@ function (
         server: 'http://0.0.0.0:8080',
 
         defaults: {
-			username: '',
-			password: '',
+            username: '',
+            password: '',
             id: undefined
-		},
+        },
 
-		validate: function(attrs, options) {
-			var fields = ['username', 'password'];
-			var errors = {};
+        validate: function(attrs, options) {
+            var fields = ['username', 'password'];
+            var errors = {};
             var hadErrors = false;
-			fields.forEach(function (name) {
-				if (!(attrs[name]) || attrs[name] === '') {
-					errors[name] = true;
+            fields.forEach(function (name) {
+                if (!(attrs[name]) || attrs[name] === '') {
+                    errors[name] = true;
                     hadErrors = true;
-				}
+                }
                 else {
                     errors[name] = false;
                 }
-			});
+            });
             if (hadErrors)
-    			return errors;
-		},
+                return errors;
+        },
 
         sync: function (method, model, options) {
 
