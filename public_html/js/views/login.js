@@ -1,11 +1,11 @@
 define([
     'backbone',
     'tmpl/login',
-    'models/session'
+    'models/user'
 ], function(
     Backbone,
     tmpl,
-    LoginUser
+    User
 ){
     var LoginView = Backbone.View.extend({
 
@@ -54,7 +54,7 @@ define([
 
         template: tmpl,
         initialize: function () {
-            this.model = new LoginUser();
+            this.model = new User();
             this.model.on("invalid", this.handleErrors.bind(this));
             Backbone.sync = this.model.askBackend;
         },

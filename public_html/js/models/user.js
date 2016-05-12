@@ -1,10 +1,11 @@
 define([
     'backbone'
-], function(
+],
+function (
     Backbone
 ){
 
-	var LoginUserModel = Backbone.Model.extend({
+    var User = Backbone.Model.extend({
 
         server: 'http://0.0.0.0:8080',
 
@@ -29,14 +30,11 @@ define([
 			});
             if (hadErrors)
     			return errors;
-
 		},
 
         sync: function (method, model, options) {
-
             var newLogin = options.username;
             var newPass = options.password;
-
             switch (method) {
                 case 'create':
                     this.register(model, newLogin, newPass);
@@ -51,13 +49,36 @@ define([
                     this.drop(model);
                     break;
                 default:
+                    console.log('whaaa?');
                     break;
-
             }
         },
 
-        register: function (model, uname, pass) {
-            console.log('regging');
+        register: function (model, uname, pass, email) {
+            var request = new XMLHttpRequest();
+
+            request.open('PUT', this.server + '/backend/user');
+
+            request.setRequestHeader('Content-Type', 'application/json');
+
+            request.onreadystatechange = (function (this, model) {
+                if (this.readyState === 4) {
+                    if (this.status == 200) {
+                        model.id = JSON.parse(this.responseText).id;
+                    }
+                    else {
+                        alert('The registration went wrong!');
+                    }
+                }
+              }).bind(request, model);
+
+            var body = {
+              'login': uname,
+              'password': pass,
+              'email': email
+            };
+            request.send(JSON.stringify(body));
+            console.log(this);
         },
 
         login: function (model, uname, pass) {
@@ -73,7 +94,7 @@ define([
                         model.id = JSON.parse(this.responseText).id;
                     }
                     else {
-                        alert(this.readyState + '-' + this.status + 'returned with "' + this.responseText + '" message');
+                        alert('Can\'t login!');
                     }
                 }
 
@@ -86,15 +107,14 @@ define([
             request.send(JSON.stringify(body));
         },
 
-        edit: function (model, uname, pass) {
-            console.log('editing');
+        edit: function () {
+            console.log('this will contain the code to edit user info');
         },
 
-        drop: function (model) {
-            console.log('dropping');
+        drop: function () {
+            console.log('this will contain the code to drop the user');
         }
+    });
 
-	});
-
-	return LoginUserModel;
+    return User;
 });

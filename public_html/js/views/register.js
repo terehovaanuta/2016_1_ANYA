@@ -1,11 +1,11 @@
 define([
     'backbone',
     'tmpl/login',
-    'models/registration'
+    'models/user'
 ], function(
     Backbone,
     tmpl,
-    LoginUser
+    User
 ){
     var RegisterView = Backbone.View.extend({
 
@@ -48,13 +48,13 @@ define([
                 'password': this.elems.password.value
             }
 
-            this.model.fetch(data);
+            this.model.save(data);
 
         },
 
         template: tmpl,
         initialize: function () {
-            this.model = new LoginUser();
+            this.model = new User();
             this.model.on("invalid", this.handleErrors.bind(this));
             Backbone.sync = this.model.askBackend;
         },
