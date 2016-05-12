@@ -80,7 +80,5 @@ define([
 
     });
 
-
-
     return new LoginView();
 });
