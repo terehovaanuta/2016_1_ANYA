@@ -47,7 +47,7 @@ define([
                 'username': this.elems.username.value,
                 'password': this.elems.password.value
             }
-
+            
             this.model.save(data);
 
         },
@@ -55,7 +55,8 @@ define([
         template: tmpl,
         initialize: function () {
             this.model = new User();
-            this.model.on("invalid", this.handleErrors.bind(this));
+            this.model.on('invalid', this.handleErrors.bind(this));
+            this.model.on('loggedin', this.loggedIn);
         },
 
         render: function () {

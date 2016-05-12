@@ -47,16 +47,22 @@ define([
                 'username': this.elems.username.value,
                 'password': this.elems.password.value
             }
+            if(this.model.set(data, {validate: true})) {
+                this.model.fetch();
+            }
 
-            this.model.fetch(data);
+        },
 
+        clearForm: function () {
+            this.$el.find('.form__input').val('');
         },
 
         template: tmpl,
         initialize: function () {
             this.model = new User();
-            this.model.on("invalid", this.handleErrors.bind(this));
-            Backbone.sync = this.model.askBackend;
+            this.model.on('invalid', this.handleErrors.bind(this));
+            this.model.on('loggedin', this.loggedIn);
+            this.on('show', this.clearForm.bind(this));
         },
 
         render: function () {

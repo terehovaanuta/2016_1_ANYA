@@ -39,10 +39,10 @@ function (
                     this.register(model, model.attributes.username, model.attributes.password);
                     break;
                 case 'read':
-                    this.login(model, options.username, options.password);
+                    this.login(model, model.attributes.username, model.attributes.password);
                     break;
                 case 'update':
-                    this.edit(model, options.username, options.password);
+                    this.edit(model, model.attributes.username, model.attributes.password);
                     break;
                 case 'delete':
                     this.drop(model);
@@ -65,10 +65,10 @@ function (
                 if (this.readyState === 4) {
                     if (this.status == 200) {
                         model.id = JSON.parse(this.responseText).id;
+                        model.trigger('loggedin');
                     }
                     else {
                         alert(this.readyState + '-' + this.status + 'returned with "' + this.responseText + '" message');
-                        console.log(this);
                     }
                 }
               }).bind(request, model);
@@ -93,9 +93,17 @@ function (
                 if (this.readyState === 4) {
                     if (this.status == 200) {
                         model.id = JSON.parse(this.responseText).id;
+                        model.trigger('loggedin');
+                    }
+                    else if (this.status == 204) {
+                        alert('No such user exists!');
+                    }
+                    else if (this.status == 400) {
+                        alert('Wrong password!');
                     }
                     else {
-                        alert(this.readyState + '-' + this.status + 'returned with "' + this.responseText + '" message');
+                        alert('Unknown error!');
+                        console.log(this.readyState + '-' + this.status + 'returned with "' + this.responseText + '" message');
                     }
                 }
 
