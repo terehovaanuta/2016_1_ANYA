@@ -61,14 +61,22 @@ function (
 
             request.setRequestHeader('Content-Type', 'application/json');
 
-            request.onreadystatechange = (function (tis, model) {
+            request.onreadystatechange = (function (model) {
                 if (this.readyState === 4) {
-                    if (this.status == 200) {
-                        model.id = JSON.parse(this.responseText).id;
-                        model.trigger('loggedin');
-                    }
-                    else {
-                        alert(this.readyState + '-' + this.status + 'returned with "' + this.responseText + '" message');
+                    switch (this.status) {
+                        case 200: {
+                            model.trigger('loggedin');
+                            break;
+                        }
+                        case 403: {
+                            model.trigger('invalid', {message: 'Such a user already exists!'});
+                            break;
+                        }
+                        default: {
+                            model.trigger('invalid', {message: 'Unknown error!'});
+                            console.log(this.readyState + '-' + this.status + 'returned with "' + this.responseText + '" message');
+                            break;
+                        }
                     }
                 }
               }).bind(request, model);
@@ -89,21 +97,26 @@ function (
 
             request.setRequestHeader('Content-Type', 'application/json');
 
-            request.onreadystatechange = (function (tis, model) {
+            request.onreadystatechange = (function (model) {
                 if (this.readyState === 4) {
-                    if (this.status == 200) {
-                        model.id = JSON.parse(this.responseText).id;
-                        model.trigger('loggedin');
-                    }
-                    else if (this.status == 204) {
-                        alert('No such user exists!');
-                    }
-                    else if (this.status == 400) {
-                        alert('Wrong password!');
-                    }
-                    else {
-                        alert('Unknown error!');
-                        console.log(this.readyState + '-' + this.status + 'returned with "' + this.responseText + '" message');
+                    switch (this.status) {
+                        case 200: {
+                            model.trigger('loggedin');
+                            break;
+                        }
+                        case 204: {
+                            model.trigger('invalid', {message: 'No such user!'});
+                            break;
+                        }
+                        case 400: {
+                            model.trigger('invalid', {message: 'Wrong password!'});
+                            break;
+                        }
+                        default: {
+                            model.trigger('invalid', {message: 'Unknown error while logging in'});
+                            console.log(this.readyState + ' - ' + this.status + ' returned with "' + this.responseText + '" message');
+                            break;
+                        }
                     }
                 }
 

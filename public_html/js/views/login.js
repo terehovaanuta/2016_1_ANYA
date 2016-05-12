@@ -15,7 +15,7 @@ define([
             "submit": "validate"
         },
 
-        erratives: ['username', 'password'],
+        erratives: ['username', 'password', 'message'],
 
         showError: function (container) {
             container.addClass('form__error_shown');
@@ -30,8 +30,13 @@ define([
 
         handleErrors: function(model, error) {
             this.resetErrors();
+            if ('message' in model) {
+                error = {'message': true};
+                this.$el.find("#message").html(model.message);
+            }
             for (var field in this.erratives) {
                 if (error[this.erratives[field]]) {
+                    console.log(field);
                     this.showError(this.$('.form__' + this.erratives[field]));
                 }
             }
