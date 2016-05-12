@@ -65,6 +65,7 @@ function (
                 if (this.readyState === 4) {
                     switch (this.status) {
                         case 200: {
+                            model.set({id: JSON.parse(this.responseText).id});
                             model.trigger('loggedin');
                             break;
                         }
@@ -101,6 +102,7 @@ function (
                 if (this.readyState === 4) {
                     switch (this.status) {
                         case 200: {
+                            model.set({id: JSON.parse(this.responseText).id});
                             model.trigger('loggedin');
                             break;
                         }

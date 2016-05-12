@@ -42,9 +42,7 @@ define([
         },
 
         validate: function (event) {
-            if (event) {
-                event.preventDefault();
-            }
+            event.preventDefault();
 
             this.elems = this.$('form')[0].elements;
             var data = {
