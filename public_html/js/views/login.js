@@ -60,9 +60,9 @@ define([
         template: tmpl,
         initialize: function () {
             this.model = new User();
-            this.model.on('invalid', this.handleErrors.bind(this));
-            this.model.on('loggedin', this.loggedIn);
-            this.on('show', this.clearForm.bind(this));
+            this.listenTo(this.model, 'invalid', this.handleErrors);
+            this.listenTo(this.model, 'loggedin', this.loggedIn);
+            this.on('show', this.clearForm);
         },
 
         render: function () {

@@ -47,16 +47,21 @@ define([
                 'username': this.elems.username.value,
                 'password': this.elems.password.value
             }
-            
+
             this.model.save(data);
 
+        },
+
+        clearForm: function () {
+            this.$el.find('.form__input').val('');
         },
 
         template: tmpl,
         initialize: function () {
             this.model = new User();
-            this.model.on('invalid', this.handleErrors.bind(this));
-            this.model.on('loggedin', this.loggedIn);
+            this.listenTo(this.model, 'invalid', this.handleErrors);
+            this.listenTo(this.model, 'loggedin', this.loggedIn);
+            this.on('show', this.clearForm);
         },
 
         render: function () {
