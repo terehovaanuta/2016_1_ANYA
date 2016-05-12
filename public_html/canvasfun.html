@@ -9,10 +9,10 @@
         <script type="text/javascript">
             (function () {
                 'use strict';
-                var canvas = document.querySelector('canvas');
+                const canvas = document.querySelector('canvas');
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
-                var context = canvas.getContext('2d');
+                const context = canvas.getContext('2d');
                 class Ball {
                     get x() {return this._x};
                     get y() {return this._y};
@@ -25,7 +25,7 @@
                     }
 
                     draw(context) {
-                        var currentR = 0;
+                        let currentR = 0;
                         while (currentR < this.r) {
                             context.beginPath();
                             context.arc(this.x, this.y, currentR += 0.2, 0, Math.PI * 2);
@@ -50,12 +50,12 @@
                     }
                 }
 
-                var r = Math.random() * 100;
-                var k = Math.random() * 3;
-                var i = 0.01;
-                var animationID;
+                const r = Math.random() * 100;
+                const k = Math.random() * 3;
+                let i = 0.01;
+                let animationID;
                 function animate() {
-                    var ball = new Ball(epycicloide(r, k, i).x, epycicloide(r, k, i).y, Math.random() * 20);
+                    const ball = new Ball(epycicloide(r, k, i).x, epycicloide(r, k, i).y, Math.random() * 20);
                     ball.draw(context);
                     i += 0.1;
                     animationID = requestAnimationFrame(animate);
