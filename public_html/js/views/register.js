@@ -79,6 +79,9 @@ define([
             this.resetErrors();
         },
 
+        loggedIn: function () {
+            document.location = "#main";
+        }
     });
 
     return new RegisterView();

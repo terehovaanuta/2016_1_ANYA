@@ -81,6 +81,10 @@ define([
             this.resetErrors();
         },
 
+        loggedIn: function () {
+            document.location = "#main";
+        }
+
     });
 
     return new LoginView();
