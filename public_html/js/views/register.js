@@ -56,7 +56,6 @@ define([
         initialize: function () {
             this.model = new User();
             this.model.on("invalid", this.handleErrors.bind(this));
-            Backbone.sync = this.model.askBackend;
         },
 
         render: function () {

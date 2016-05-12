@@ -20,7 +20,7 @@ function (
 			var errors = {};
             var hadErrors = false;
 			fields.forEach(function (name) {
-				if (attrs[name] === '') {
+				if (!(attrs[name]) || attrs[name] === '') {
 					errors[name] = true;
                     hadErrors = true;
 				}
@@ -33,17 +33,16 @@ function (
 		},
 
         sync: function (method, model, options) {
-            var newLogin = options.username;
-            var newPass = options.password;
+
             switch (method) {
                 case 'create':
-                    this.register(model, newLogin, newPass);
+                    this.register(model, model.attributes.username, model.attributes.password);
                     break;
                 case 'read':
-                    this.login(model, newLogin, newPass);
+                    this.login(model, options.username, options.password);
                     break;
                 case 'update':
-                    this.edit(model, newLogin, newPass);
+                    this.edit(model, options.username, options.password);
                     break;
                 case 'delete':
                     this.drop(model);
@@ -55,19 +54,21 @@ function (
         },
 
         register: function (model, uname, pass, email) {
+
             var request = new XMLHttpRequest();
 
             request.open('PUT', this.server + '/backend/user');
 
             request.setRequestHeader('Content-Type', 'application/json');
 
-            request.onreadystatechange = (function (this, model) {
+            request.onreadystatechange = (function (tis, model) {
                 if (this.readyState === 4) {
                     if (this.status == 200) {
                         model.id = JSON.parse(this.responseText).id;
                     }
                     else {
-                        alert('The registration went wrong!');
+                        alert(this.readyState + '-' + this.status + 'returned with "' + this.responseText + '" message');
+                        console.log(this);
                     }
                 }
               }).bind(request, model);
@@ -77,8 +78,8 @@ function (
               'password': pass,
               'email': email
             };
+
             request.send(JSON.stringify(body));
-            console.log(this);
         },
 
         login: function (model, uname, pass) {
@@ -94,7 +95,7 @@ function (
                         model.id = JSON.parse(this.responseText).id;
                     }
                     else {
-                        alert('Can\'t login!');
+                        alert(this.readyState + '-' + this.status + 'returned with "' + this.responseText + '" message');
                     }
                 }
 
