@@ -25,7 +25,7 @@ module.exports = function (grunt) {
         },
 
         concurrent: {
-            target1: ['shell', 'watch'],
+            target1: ['shell', 'watch', 'sass'],
             options: {
                 logConcurrentOutput: true
             }
@@ -52,6 +52,17 @@ module.exports = function (grunt) {
             }
         },
 
+        sass: {
+            css: {
+                files: [{
+                    expand: true,
+                    cwd: 'public_html/css',
+                    src: '*.scss',
+                    dest: 'public_html/css',
+                    ext:  '.css'
+                }]
+            }
+        },
 
         qunit: {
             all: ['./public_html/tests/index.html'],
@@ -69,6 +80,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-concurrent');
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-fest');
+    grunt.loadNpmTasks('grunt-sass');
 
     // результат команды grunt
     grunt.registerTask('test', ['qunit:all']);
