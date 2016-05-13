@@ -25,7 +25,7 @@ module.exports = function (grunt) {
         },
 
         concurrent: {
-            target1: ['shell', 'watch'],
+            target1: ['shell', 'watch', 'sass'],
             options: {
                 logConcurrentOutput: true
             }
@@ -56,9 +56,9 @@ module.exports = function (grunt) {
             css: {
                 files: [{
                     expand: true,
-                    cwd: 'public_html/css', /* исходная директория */
-                    src: '*.scss', /* имена шаблонов */
-                    dest: 'public_html/css', /* результирующая директория */
+                    cwd: 'public_html/css',
+                    src: '*.scss',
+                    dest: 'public_html/css',
                     ext:  '.css'
                 }]
             }
