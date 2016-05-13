@@ -7,7 +7,7 @@ function (
 
     var Session = Backbone.Model.extend({
 
-        restResource: 'http://0.0.0.0:8080/backend/session',
+        restResource: 'backend/session',
 
         defaults: {
             username: '',
