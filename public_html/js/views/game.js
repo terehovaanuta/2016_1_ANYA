@@ -31,7 +31,11 @@ define([
         },
 
         game: function() {
-            function throttle(fn, threshhold = 250, scope = this) {
+            function throttle(fn, threshhold, scope) {
+                if (!threshhold)
+                    threshhold = 250;
+                if (!scope)
+                    scope = this;
                 var last,
                     deferTimer;
                 return function () {
