@@ -58,7 +58,7 @@
                 let balls = [];
                 function animate() {
                     balls[it] = new Ball(epycicloide(r, k, i).x, epycicloide(r, k, i).y, Math.random() * 20);
-                    balls[it++].draw(context);
+                    balls[it].draw(context);
                     delete balls[it++];
                     i += 0.1;
                     animationID = requestAnimationFrame(animate);
