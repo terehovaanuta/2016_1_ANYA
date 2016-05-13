@@ -2,32 +2,29 @@
   display: inline;
   text-align: center;
   width: 100%;
-}
 
-.form__input {
+&__input {
   padding: 5px;
   font-size: 28px;
   border-radius: 5px;
   font-family: 'Conv_rodchenko';
+  &_error {
+    border: 1px solid red;
+  }
 }
 
-.form__username, .form__password {
+&__username, &__password {
   padding: 5px;
 }
 
-.form__error {
+&__error {
   input, textarea {
     display: block;
   }
   color: red;
   display: none;
   font-size: 25px;
-}
-
-.form__input_error {
-  border: 1px solid red;
-}
-
-.form__error_shown {
-  display: block;
-}
+  &_shown {
+    display: block;
+  }
+}}

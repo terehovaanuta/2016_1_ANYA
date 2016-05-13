@@ -1,11 +1,10 @@
 .header {
   font-family: 'Conv_rodchenko', Sans-Serif;
   background-color: red;
-}
 
-.header__appname {
+&__appname {
   text-align: center;
   font-size: 40px;
   padding: 20px 0px 20px 0px;
   width: 100%;
-}
+}}
