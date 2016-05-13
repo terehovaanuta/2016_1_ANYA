@@ -12,8 +12,8 @@ module.exports = function (grunt) {
 
         watch: {
             scripts: {
-                files: ['templates/*.xml'],
-                tasks: ['fest'],
+                files: ['templates/*.xml', 'public_html/css/*.scss'],
+                tasks: ['fest', 'sass'],
                 options: {
                     spawn: false
                 }
@@ -25,7 +25,7 @@ module.exports = function (grunt) {
         },
 
         concurrent: {
-            target1: ['shell', 'watch', 'sass'],
+            target1: ['shell', 'watch'],
             options: {
                 logConcurrentOutput: true
             }
