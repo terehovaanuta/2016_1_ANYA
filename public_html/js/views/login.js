@@ -1,11 +1,11 @@
 define([
     'backbone',
     'tmpl/login',
-    'models/user'
+    'models/session'
 ], function(
     Backbone,
     tmpl,
-    User
+    Session
 ){
     var LoginView = Backbone.View.extend({
 
@@ -50,9 +50,7 @@ define([
                 'username': this.elems.username.value,
                 'password': this.elems.password.value
             }
-            if(this.model.set(data, {validate: true})) {
-                this.model.fetch();
-            }
+            this.model.save(data);
 
         },
 
@@ -62,7 +60,7 @@ define([
 
         template: tmpl,
         initialize: function () {
-            this.model = new User();
+            this.model = new Session();
             this.listenTo(this.model, 'invalid', this.handleErrors);
             this.listenTo(this.model, 'loggedin', this.loggedIn);
             this.on('show', this.clearForm);

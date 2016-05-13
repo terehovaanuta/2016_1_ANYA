@@ -12,7 +12,7 @@ function (
         defaults: {
             username: '',
             password: '',
-            id: undefined
+            id: 0
         },
 
         validate: function(attrs, options) {
@@ -47,11 +47,10 @@ function (
             }
         },
 
-        create: function (model, uname, pass, email) {
-
+        create: function (model, uname, pass) {
             var request = new XMLHttpRequest();
 
-            request.open('PUT', this.restResource);
+            request.open('PUT', this.server + '/backend/session');
 
             request.setRequestHeader('Content-Type', 'application/json');
 
@@ -60,30 +59,34 @@ function (
                     switch (this.status) {
                         case 200: {
                             model.set({id: JSON.parse(this.responseText).id});
-                            model.trigger('invalid', {message: 'Successfully registered!'});
+                            model.trigger('loggedin');
                             break;
                         }
-                        case 403: {
-                            model.trigger('invalid', {message: 'Such a user already exists!'});
+                        case 204: {
+                            model.trigger('invalid', {message: 'No such user!'});
+                            break;
+                        }
+                        case 400: {
+                            model.trigger('invalid', {message: 'Wrong password!'});
                             break;
                         }
                         default: {
-                            model.trigger('invalid', {message: 'Unknown error!'});
-                            console.log(this.readyState + '-' + this.status + 'returned with "' + this.responseText + '" message');
+                            model.trigger('invalid', {message: 'Unknown error while logging in'});
+                            console.log(this.readyState + ' - ' + this.status + ' returned with "' + this.responseText + '" message');
                             break;
                         }
                     }
                 }
+
               }).bind(request, model);
 
             var body = {
               'login': uname,
-              'password': pass,
-              'email': email
+              'password': pass
             };
-
             request.send(JSON.stringify(body));
         },
+
 
         edit: function () {
             console.log('this will contain the code to edit user info');
@@ -94,5 +97,5 @@ function (
         }
     });
 
-    return User;
+    return Session;
 });
