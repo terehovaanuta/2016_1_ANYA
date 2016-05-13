@@ -80,7 +80,7 @@ define([
         },
 
         loggedIn: function () {
-            document.location = "#main";
+            //the code after login
         }
 
     });

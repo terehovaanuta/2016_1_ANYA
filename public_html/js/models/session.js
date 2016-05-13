@@ -5,14 +5,14 @@ function (
     Backbone
 ){
 
-    var User = Backbone.Model.extend({
+    var Session = Backbone.Model.extend({
 
-        restResource: 'http://0.0.0.0:8080/backend/user',
+        restResource: 'http://0.0.0.0:8080/backend/session',
 
         defaults: {
             username: '',
             password: '',
-            id: 0
+            id: undefined
         },
 
         validate: function(attrs, options) {
@@ -42,7 +42,7 @@ function (
                     this.drop(model);
                     break;
                 default:
-                    console.log('whaaa?');
+                    console.log(method, model, options);
                     break;
             }
         },
@@ -50,7 +50,7 @@ function (
         create: function (model, uname, pass) {
             var request = new XMLHttpRequest();
 
-            request.open('PUT', this.server + '/backend/session');
+            request.open('PUT', this.restResource);
 
             request.setRequestHeader('Content-Type', 'application/json');
 

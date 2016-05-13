@@ -62,7 +62,6 @@ define([
         initialize: function () {
             this.model = new User();
             this.listenTo(this.model, 'invalid', this.handleErrors);
-            this.listenTo(this.model, 'loggedin', this.loggedIn);
             this.on('show', this.clearForm);
         },
 
@@ -78,10 +77,6 @@ define([
             this.$el.hide();
             this.resetErrors();
         },
-
-        loggedIn: function () {
-            document.location = "#main";
-        }
     });
 
     return new RegisterView();
