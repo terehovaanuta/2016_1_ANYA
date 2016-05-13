@@ -60,7 +60,7 @@ define([
 
         template: tmpl,
         initialize: function () {
-            this.model = new Session();
+            this.model = Session();
             this.listenTo(this.model, 'invalid', this.handleErrors);
             this.listenTo(this.model, 'loggedin', this.loggedIn);
             this.on('show', this.clearForm);
@@ -80,6 +80,7 @@ define([
         },
 
         loggedIn: function () {
+            this.model.trigger('invalid', {message: 'Success!'});
             //the code after login
         }
 

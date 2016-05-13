@@ -38,6 +38,9 @@ function (
                 case 'create':
                     this.create(model, model.attributes.username, model.attributes.password);
                     break;
+                case 'update':
+                    model.trigger('invalid', {message: 'You are already logged in!'});
+                    break;
                 case 'delete':
                     this.drop(model);
                     break;
@@ -97,5 +100,17 @@ function (
         }
     });
 
-    return Session;
+    var Singletone = (function () {
+        var instance;
+
+        return function Construct_singletone () {
+            if (!instance) {
+                instance = new Session();
+            }
+            return instance;
+        }
+    }());
+
+
+    return Singletone;
 });
