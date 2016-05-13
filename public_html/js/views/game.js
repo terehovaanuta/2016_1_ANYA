@@ -61,10 +61,11 @@ define([
                 };
             }
 
-            this.$el.find('#resetGame').on('click', this.play.bind(this, this.$el));
 
             var renderer = PIXI.autoDetectRenderer($(window).width() * 0.8, $(window).height() * 0.7, {view: this.$el.find('#game-canvas').get(0)});
 
+            this.$el.find('#resetGame').on('click', this.play.bind(this, this.$el, renderer));
+            
             this.play(this.$el, renderer);
         },
 
