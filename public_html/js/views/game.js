@@ -52,7 +52,8 @@ define([
                     }
                 };
             }
-            this.$el.children('#resetGame').on('click', play);
+            
+            this.$el.find('#resetGame').on('click', play.bind(this, this.$el));
 
             var renderer = PIXI.autoDetectRenderer($(window).width() * 0.8, $(window).height() * 0.7, {view: this.$el.find('#game-canvas').get(0)});
 
@@ -67,6 +68,7 @@ define([
                     //weight center
                     monsters[i].anchor.x = 0.5;
                     monsters[i].anchor.y = 0.5;
+                    console.log(element);
                     monsters[i].position.x = element.find('#game-canvas')[0].width + 200 * i;
                     monsters[i].position.y = element.find('#game-canvas')[0].height - 100;
                     stage.addChild(monsters[i]);
