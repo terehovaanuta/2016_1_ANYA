@@ -16,9 +16,6 @@ define([
 
         template: tmpl,
 
-        initialize: function () {
-            // TODO
-        },
         render: function () {
             this.$el.html(this.template());
             return this;
